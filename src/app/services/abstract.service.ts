@@ -17,7 +17,7 @@ export class AbstractService<DataType extends AbstractData> {
     constructor(protected http: Http) {}
 
 
-    get(): Promise<DataType[] | string> {
+    get(): Promise<DataType[]> {
         return this.http
         .get(this.apiUrl + '?api_token=ssss', {headers: this.headers})
         .toPromise()
@@ -26,7 +26,7 @@ export class AbstractService<DataType extends AbstractData> {
     }
 
 
-    post(item: DataType): Promise<DataType | string> {
+    post(item: DataType): Promise<DataType> {
         return this.http
         .post(this.apiUrl + '?api_token=ssss', item, {headers: this.headers})
         .toPromise()
@@ -35,7 +35,7 @@ export class AbstractService<DataType extends AbstractData> {
     }
 
 
-    put(item: DataType): Promise<DataType | string> {
+    put(item: DataType): Promise<DataType> {
         return this.http
         .put(this.apiUrl + '/' + item.id + '?api_token=ssss', item, {headers: this.headers})
         .toPromise()
@@ -44,7 +44,7 @@ export class AbstractService<DataType extends AbstractData> {
     }
 
 
-    delete(item: DataType): Promise<HttpResponse | string> {
+    delete(item: DataType): Promise<HttpResponse> {
         return this.http
         .delete(this.apiUrl + '/' + item.id + '?api_token=ssss', {headers: this.headers})
         .toPromise()

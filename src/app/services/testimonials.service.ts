@@ -16,7 +16,7 @@ export class TestimonialService extends AbstractService<Testimonial> {
     }
 
 
-    get(): Promise<Testimonial[] | string> {
+    get(): Promise<Testimonial[]> {
         return this.http
         .get(this.apiUrl + '?api_token=ssss', {headers: this.headers})
         .toPromise()
@@ -31,7 +31,7 @@ export class TestimonialService extends AbstractService<Testimonial> {
     }
 
 
-    post(item: Testimonial): Promise<Testimonial | string> {
+    post(item: Testimonial): Promise<Testimonial> {
         const apiTestimonial = new ApiTestimonial(item, true);
         return this.http
         .post(this.apiUrl + '?api_token=ssss', apiTestimonial, {headers: this.headers})
@@ -41,7 +41,7 @@ export class TestimonialService extends AbstractService<Testimonial> {
     }
 
 
-    put(item: Testimonial): Promise<Testimonial | string> {
+    put(item: Testimonial): Promise<Testimonial> {
         const apiTestimonial = new ApiTestimonial(item, true);
         return this.http
         .put(this.apiUrl + '/' + item.id + '?api_token=ssss', apiTestimonial, {headers: this.headers})
